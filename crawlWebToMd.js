@@ -9,10 +9,12 @@ dotenv.config();
 const app = new FirecrawlApp({apiKey: process.env.FIRECRAWL_KEY});
 const rl = readline.createInterface({input, output});
 
-async function saveMarkdown(mdContent, title, filePath) {
+async function saveMarkdown(mdContent, titleList, filePath) {
     try {
-        await fs.writeFile(filePath, mdContent, 'utf8');
-        console.log(`Markdown file——"${title}" has been saved to: ${filePath}`);
+        await fs.appendFile(filePath, mdContent, 'utf8');
+        titleList.map(title => {
+            console.log(`Markdown file——"${title}" has been saved to: ${filePath}`);
+        })
     } catch (error) {
         console.error('Error saving Markdown file:', error);
     }
@@ -25,9 +27,7 @@ if (url && url.endsWith("/")) {
     limit = await rl.question("Crawl limit(default value is no limit, maybe will use up a lot of your usage): ");
     scrapeResult = await app.crawlUrl(url, {
         crawlerOptions: {
-            excludes: [],
-            includes: [],
-            limit: limit ? limit : null
+            excludes: [], includes: [], limit: limit ? limit : null
         },
     }, true, 2);
 } else {
@@ -38,7 +38,12 @@ if (url && url.endsWith("/")) {
 // Scrape a website:
 
 console.log("total crawl " + Object.values(scrapeResult).length + " page")
-Object.values(scrapeResult).map(async data => {
-    await saveMarkdown(data.markdown, data.metadata.title, "output.md")
+let allMdData
+let titleList = []
+Object.values(scrapeResult).map(data => {
+    allMdData += data.markdown
+    titleList.push(data.metadata.title)
 })
+await saveMarkdown(allMdData, titleList, "output.md")
+
 rl.close()
