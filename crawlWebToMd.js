@@ -11,7 +11,7 @@ const rl = readline.createInterface({input, output});
 
 async function saveMarkdown(mdContent, titleList, filePath) {
     try {
-        await fs.appendFile(filePath, mdContent, 'utf8');
+        await fs.writeFile(filePath, mdContent, 'utf8');
         titleList.map(title => {
             console.log(`Markdown file——"${title}" has been saved to: ${filePath}`);
         })
