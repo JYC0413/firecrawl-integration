@@ -11,10 +11,31 @@ npm install
 ## 2. Modify environment variables to add your FireCrawl key
 You can get this key from [FireCrawl API keys page](https://www.firecrawl.dev/app/api-keys).
 
+If on MacOS/Linux
 ```bash
-vi .env
-FIRECRAWL_KEY=your firecrawl key
+export FIRECRAWL_KEY="your_api_key_here"
 ```
+### as a temporary environment variable
+
+If on Windows, when using CMD
+```bash
+set FIRECRAWL_KEY=your_api_key_here
+```
+When using PowerShell
+```bash
+$env:FIRECRAWL_KEY="your_api_key_here"
+```
+
+### as a permanent environment variable
+Use CMD in windows, enter the following command and open a new window to take effect
+```bash
+setx FIRECRAWL_KEY=your_api_key_here
+```
+Add .env file in the current directory
+```dotenv
+FIRECRAWL_KEY=your_api_key_here
+```
+
 
 ## 3. Run crawlWebToMd.js
 
