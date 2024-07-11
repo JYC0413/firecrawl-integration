@@ -24,7 +24,7 @@ const url = await rl.question("The link to the website you want to convert to md
 let limit
 let scrapeResult
 if (url && url.endsWith("/")) {
-    limit = await rl.question("Crawl limit(default value is no limit, maybe will use up a lot of your usage): ");
+    // limit = await rl.question("Crawl limit(default value is no limit, maybe will use up a lot of your usage): ");
     scrapeResult = await app.crawlUrl(url, {
         crawlerOptions: {
             excludes: [], includes: [], limit: limit ? limit : null

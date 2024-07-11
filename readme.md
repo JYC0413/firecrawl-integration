@@ -43,12 +43,12 @@ FIRECRAWL_KEY=your_api_key_here
 node crawlWebToMd.js
 ```
 ![img.png](public/crawlAllWeb.png)
-Follow the prompts to enter the URL you want to convert and the quantity limit.
+Follow the prompts to enter the URL you want to convert.
 
 ![img_1.png](public/scrapeSingleWeb.png)
 If you provide a URL that does not end with /, we will assume that you only want to convert this page to Markdown
 
 ![img.png](public/noLimit.png)
-_Note:_ `If you want to crawl the entire website, your usage may be consumed quickly or may not be sufficient. I recommend setting a very small value, such as 10, if you just want to try out this feature and do not have an actual need.`
+_Note:_ `If you want to crawl the entire website, your usage may be consumed quickly or may not be sufficient.`
 
 After that, you will get the result.
