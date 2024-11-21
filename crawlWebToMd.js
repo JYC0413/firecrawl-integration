@@ -27,7 +27,7 @@ if (url && url.endsWith("/")) {
     limit = await rl.question("Crawl limit(default value is no limit, maybe will use up a lot of your usage): ");
     scrapeResult = await app.crawlUrl(url, {
         crawlerOptions: {
-            excludes: [], includes: [], limit: limit ? limit : null
+            excludes: [], includes: [], limit: limit ? limit : 500
         },
     }, true, 2);
 } else {
